@@ -30,7 +30,7 @@
             <li class="nav-item"><a class="nav-link" href="contactus.html"><span class="fa fa-address fa-lg"></span> Contact</a></li>
         </ul>
         <span class="navbar-text">
-            <a data-toggle="modal" data-target="#loginModal">
+            <a id="bt-login">
             <span class="fa fa-sign-in"></span> Login</a>
         </span>
     </div>    
@@ -42,7 +42,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Login </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" id="dissmisslogin">&times;</button>
             </div>
             <div class="modal-body">
                 <form>
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary btn-sm ml-auto" id="cancellogin">Cancel</button>
                         <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>        
                     </div>
                 </form>
@@ -78,7 +78,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title"><strong>Reserve a table</strong></h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" id="dismissreserve-bt">&times;</button>
             </div>
             <div class="modal-body">
                 <form>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-sm-8 offset-sm-4">
-                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancel</button>
+                            <button type="button" class="btn btn-secondary" id="cancelreserve-bt">Cancel</button>
                             <button type="reset" class="btn btn-primary">Reserve</button>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm-3 my-auto">
-                    <a class="btn btn-warning btn-block nav-link" role="button" data-toggle="modal" data-target="#reservationform">Reserve table</a>
+                    <a class="btn btn-warning btn-block nav-link" role="button" id="bt-reserve">Reserve a table</a>
                 </div>
             </div>
         </div>
@@ -331,6 +331,25 @@
                     $("#carouselButton").children("span").removeClass('fa-play');
                     $("#carouselButton").children("span").addClass('fa-pause')
                 }                
+            });
+            $("#bt-login").click(function(){
+                $('#loginModal').modal('show');
+            });        
+            $("#dissmisslogin").click(function(){
+                $('#loginModal').modal('hide');
+            }); 
+            $("#cancellogin").click(function(){
+                $('#loginModal').modal('hide');
+            });
+
+            $('#bt-reserve').click(function(){
+                $('#reservationform').modal('show');
+            });
+            $("#dismissreserve-bt").click(function(){
+                $('#reservationform').modal('hide');
+            }); 
+            $("#cancelreserve-bt").click(function(){
+                $('#reservationform').modal('hide');
             });
         });
     </script>
