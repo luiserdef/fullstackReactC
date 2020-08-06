@@ -1,0 +1,55 @@
+{
+  "name": "coursefolder",
+  "version": "1.0.0",
+  "description": "Project Folder for Coursera Course",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run watch:all",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server",
+    "scss": "node-sass  C1-FrontEndUI-Bootstrap/css/ -o C1-FrontEndUI-Bootstrap/css/",
+    "watch:scss": "onchange \"C1-FrontEndUI-Bootstrap/css/*.scss\" -- npm run scss",
+    "watch:all": "parallelshell \"npm run watch:scss\" \"npm run lite\"",
+    "clean": "rimraf C1-FrontEndUI-Bootstrap/dist",
+    "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* C1-FrontEndUI-Bootstrap/dist/fonts",
+    "imagemin": "imagemin C1-FrontEndUI-Bootstrap/img/* --out-dir='C1-FrontEndUI-Bootstrap/dist/img'",
+    "usemin": "usemin C1-FrontEndUI-Bootstrap/contactus.html -d C1-FrontEndUI-Bootstrap/dist --htmlmin -o C1-FrontEndUI-Bootstrap/dist/contactus.html && usemin C1-FrontEndUI-Bootstrap/aboutus.html -d C1-FrontEndUI-Bootstrap/dist --htmlmin -o C1-FrontEndUI-Bootstrap/dist/aboutus.html && usemin C1-FrontEndUI-Bootstrap/index.html -d C1-FrontEndUI-Bootstrap/dist --htmlmin -o C1-FrontEndUI-Bootstrap/dist/index.html",
+    "build": "npm run clean && npm run imagemin && npm run copyfonts && npm run usemin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gareffpma/fullstackReactC.git"
+  },
+  "author": "Luis Sanchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gareffpma/fullstackReactC/issues"
+  },
+  "homepage": "https://github.com/gareffpma/fullstackReactC#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.1",
+    "bootstrap-social": "^5.1.1",
+    "fontawesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "lite-server": "^2.5.4",
+    "npm": "^6.14.7",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.12",
+    "cssmin": "^0.4.3",
+    "grunt": "^1.2.1",
+    "grunt-sass": "^3.1.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "htmlmin": "0.0.7",
+    "jit-grunt": "^0.10.0",
+    "node-sass": "^4.14.1",
+    "onchange": "^3.3.0",
+    "parallelshell": "^3.0.2",
+    "rimraf": "^3.0.2",
+    "time-grunt": "^2.0.0",
+    "uglifyjs": "^2.4.11",
+    "usemin-cli": "^0.6.0"
+  }
+}
