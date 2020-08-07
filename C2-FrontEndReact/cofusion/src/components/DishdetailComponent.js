@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card,CardImg, CardText, CardBody, CardTitle, Row} from 'reactstrap';
+import {Card,CardImg, CardText, CardBody, CardTitle, Row, Container} from 'reactstrap';
 
 class DishDetail extends Component{
     constructor(props){
@@ -29,11 +29,12 @@ renderDish(dish){
 renderComments(dish){
     if(dish!=null){
         const comm= dish.comments.map(commentdish=>{
-            let cdate=new Date(commentdish.date)
+          //  let cdate=new Date(commentdish.date)
             return(
                 <li>
                     <p>{commentdish.comment}</p> 
-                    <p>-- {commentdish.author} , {cdate.toDateString()} </p>
+                    <p>-- {commentdish.author} , {/*cdate.toDateString()*/}
+                    {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(commentdish.date)))} </p>
                 </li>             
             );
         });
@@ -54,16 +55,17 @@ renderComments(dish){
 }
 render(){
     return(
+        <Container>
     <Row>
          <div className="col-12 col-md-5 m-1">
-            {this.renderDish(this.props.selectedDishshow)}
+            {this.renderDish(this.props.dish)}
          </div>
          <div className="col-12 col-md-5 m-1">
-             {this.renderComments(this.props.selectedDishshow)}  
+             {this.renderComments(this.props.dish)}  
          </div>
-    </Row> 
+    </Row>             
+        </Container>
     )
-
 }
 
 }
