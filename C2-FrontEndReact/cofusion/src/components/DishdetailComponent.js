@@ -31,17 +31,19 @@ renderComments(dish){
         const comm= dish.comments.map(commentdish=>{
             let cdate=new Date(commentdish.date)
             return(
-                <div key={commentdish.id}>                
+                <li>
                     <p>{commentdish.comment}</p> 
                     <p>-- {commentdish.author} , {cdate.toDateString()} </p>
-                </div>                 
+                </li>             
             );
         });
 
         return(
             <div>
                 <h4>Comments</h4>
-                {comm}                           
+                <ul className="list-unstyled">
+                  {comm} 
+                </ul>                          
             </div>
         )
     }else{
