@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import Home from './HomeComponent'
-import Menu from './MenuComponent'
+import Home from './HomeComponent';
+import Menu from './MenuComponent';
+import About from './AboutComponent';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
-import Contact from './ContactComponent'
-import DishDetail from './DishdetailComponent'
-import Header from './HeaderComponent'
+import Contact from './ContactComponent';
+import DishDetail from './DishdetailComponent';
+import Header from './HeaderComponent';
 import { DISHES } from '../shared/dishes';
 import Footer from './FooterComponent';
 import {Switch,Route,Redirect} from 'react-router-dom';
@@ -48,6 +49,7 @@ render() {
          <Route exact path='/menu' component={()=><Menu dishes={this.state.dishes}/>}/>
          <Route path='/menu/:dishId' component={DishWithId} />
          <Route exact path='/contactus' component={Contact}/>
+         <Route exact path='/aboutus' component={()=><About leaders={this.state.leaders}/>}/>
          <Redirect to="/home"/>
      </Switch>
       <Footer/>
