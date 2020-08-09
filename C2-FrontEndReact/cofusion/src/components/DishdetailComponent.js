@@ -22,7 +22,7 @@ class CommentForm extends Component {
         })
     }
     handleSubmit(values) {
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comments);
     }
 
     render() {
