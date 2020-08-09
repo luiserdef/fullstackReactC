@@ -1,6 +1,38 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody,CardTitle, Breadcrumb, BreadcrumbItem,Container} from 'reactstrap';
+import { Button,Card, CardImg, CardText, CardBody,CardTitle, Breadcrumb, BreadcrumbItem,Container, Modal,ModalBody,ModalHeader} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {Control, LocalForm, Errors } from 'react-redux-form'
+
+
+
+
+
+class CommentForm extends Component(props){
+    constructor(props){
+        super(props);
+        this.state={
+            ModalOpen:false
+        }
+        
+        
+    }
+    render(){
+        return(
+            <Modal>
+                <ModalHeader>Submmit Comment</ModalHeader>
+                <ModalBody>
+                    <LocalForm>
+
+    
+                    </LocalForm>
+                </ModalBody>
+            </Modal> 
+        )
+    }
+
+}
+
+
 
 function RenderDish({dish}){
     if(dish!=null){
@@ -67,6 +99,7 @@ const DishDetail=(props)=>{
                     </div>
                     <div className="col-12 col-md-5 m-1">
                         <RenderComments comments={props.comments} />
+                        <Button >Submit Comment</Button>
                     </div>
                 </div>           
         </Container>
