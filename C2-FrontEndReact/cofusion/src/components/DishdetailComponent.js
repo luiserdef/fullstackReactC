@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form'
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 class CommentForm extends Component {
     constructor(props) {
         super(props);
@@ -85,6 +86,11 @@ class CommentForm extends Component {
 function RenderDish({ dish }) {
     if (dish != null) {
         return (
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
             <Card>
                 <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                 <CardBody>
@@ -92,6 +98,7 @@ function RenderDish({ dish }) {
                     <CardText>{dish.description}</CardText>
                 </CardBody>
             </Card>
+            </FadeTransform>
         );
     } else {
         return (
@@ -105,11 +112,13 @@ function RenderComments({comments, postComment, dishId}) {
         const comm = comments.map(commentdish => {
             //  let cdate=new Date(commentdish.date)
             return (
+                <Fade in>
                 <li>
                     <p>{commentdish.comment}</p>
                     <p>-- {commentdish.author} , {/*cdate.toDateString()*/}
                         {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(commentdish.date)))} </p>
                 </li>
+                </Fade>
             );
         });
 
@@ -117,8 +126,10 @@ function RenderComments({comments, postComment, dishId}) {
             <div>
                 <h4>Comments</h4>
                 <ul className="list-unstyled">
+                <Stagger in>
                     {comm}
                     <CommentForm dishId={dishId} postComment={postComment} />
+                </Stagger>
                 </ul>
             </div>
         )
