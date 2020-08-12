@@ -185,3 +185,47 @@ export const fetchLeaders = ()=>(dispatch)=>{
   .then(leaders => dispatch(addLeaders(leaders)))
   .catch(error => dispatch(leadersFailed(error.message)));
 }
+
+//Post Comments TASK3
+
+export const postFeedback=(firstname,lastname,telnum,email,message)=>(dispatch)=>{
+
+  const feddbdata={
+    firstname:firstname,
+    lastname:lastname,
+    telnum:telnum,
+    email:email,
+    message:message
+  }
+
+  feddbdata.data=new Date().toISOString();
+
+ return fetch(baseUrl+'feedback',{
+        method: "POST",
+        body: JSON.stringify(feddbdata),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+    }).then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+          throw error;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addFeedback(response)))
+    .catch(error =>  { console.log('post comments', error.message); alert('Your comment could not be posted\nError: '+error.message); });
+
+} 
+
+export const addFeedback=feedContent=>({  
+    type:ActionTypes.ADD_FEEDBACK,
+    payload:feedContent  
+})
