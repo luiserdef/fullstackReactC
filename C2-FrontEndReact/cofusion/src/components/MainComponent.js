@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
   fetchComments: () => dispatch(fetchComments()),
   fetchPromos: () => dispatch(fetchPromos()),
-  fetchLeaders:()=> dispatch(fetchLeaders())
+  fetchLeaders:()=> {dispatch(fetchLeaders())}
   
 });
 
@@ -57,13 +57,14 @@ render() {
   }
 
 
-const AboutL=()=>{
+const AboutPage=()=>{
   return(
-    <About  leader={this.props.leaders.leaders}
-            leaderLoading={this.props.leaders.isLoading}
-            leaderErrMess={this.props.leaders.errMess}
+    <About  leaders={this.props.leaders}
+      leaderLoading={this.props.leaders.isLoading}
+      leaderErrMess={this.props.leaders.errMess}
+    
     />
-  )
+  );
 }
 
   const DishWithId = ({match}) => {
@@ -85,7 +86,7 @@ const AboutL=()=>{
             <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
               <Switch location={this.props.location}>
                   <Route path='/home' component={HomePage} />
-                  <Route exact path='/aboutus' component={AboutL} />
+                  <Route exact path='/aboutus' component={AboutPage} />
                   <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
                   <Route path='/menu/:dishId' component={DishWithId} />
                   <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
