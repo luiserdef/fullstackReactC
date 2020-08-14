@@ -3,7 +3,7 @@ import Menu from './MenuComponent';
 import Dishdetail from './DishdetailComponent';
 import { DISHES } from '../shared/dishes';
 import { View, Platform } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 
 const MenuNavigator = createStackNavigator({
