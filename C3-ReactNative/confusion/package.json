@@ -8,6 +8,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "create-react-native-app": "1.0.0",
     "expo": "~38.0.9",
     "expo-splash-screen": "^0.5.0",
     "expo-status-bar": "^1.0.0",
