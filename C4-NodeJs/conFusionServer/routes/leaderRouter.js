@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 
 const leaderRouter = express.Router();
-promoRouter.use(bodyParser.json());
+leaderRouter .use(bodyParser.json());
 
 leaderRouter.route('/')
 .all((req,res,next)=>{
