@@ -1,15 +1,15 @@
 let mongoose =require('mongoose')
 const router = require('../routes')
 let Schema=mongoose.Schema
+let passportLocalMongoose=require('passport-local-mongoose')
 let User =new Schema({
-    username:{
+    firstname:{
         type:String,
-        required:true,
-        unique:true
+        default:''
     },
-    password:{
+    lastname:{
         type:String,
-        required:true
+        default:''
     },
     admin:{
         type:Boolean,
@@ -17,4 +17,5 @@ let User =new Schema({
     }
 })
 
+User.plugin(passportLocalMongoose)
 module.exports=mongoose.model('User',User)
