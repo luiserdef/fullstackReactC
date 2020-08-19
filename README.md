@@ -1,2 +1,2 @@
 # fullstackReactC
-The Hong Kong University of Science and Technology Course
+A Hong Kong University of Science and Technology Course
